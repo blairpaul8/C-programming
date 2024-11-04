@@ -60,11 +60,12 @@ void clear(struct Node **head) {
   struct Node *temp;
   struct Node *currentNode;
   currentNode = *head;
-  while (currentNode->next != NULL) {
+  while (currentNode != NULL) {
     temp = currentNode;
-    *head = currentNode->next;
+    currentNode = currentNode->next;
     free(temp);
   }
+  *head = NULL;
   return;
 }
 
@@ -95,6 +96,6 @@ int main() {
   remove_node(&head, 15);
   printf("Removing a node.\n");
   print_list(head);
-  printf("CLearing list.\n");
+  printf("Clearing list.\n");
   clear(&head);
 }
