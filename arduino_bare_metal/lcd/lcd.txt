@@ -1,0 +1,99 @@
+#include <avr/io.h>
+#include <util/delay.h>
+
+//#define LCD_DDR DDRD
+//#define LCD_PORT PORTD
+
+//Toggle the enable pin to send the comand
+void pulse_enable() {
+  PORTB |= (1 << PORTB0);
+  _delay_us(1);
+  PORTB &= ~(1 << PORTB0);
+  _delay_ms(2);
+}
+
+void write_character(char c) {
+  PORTB |= (1 << PORTB1);
+  PORTD = c;
+  pulse_enable();
+
+}
+
+int main() {
+
+  //Set Data Direction Register D (DDRD) to output pins to write to the LCD
+  DDRD |= (1 << DDD2);
+  DDRD |= (1 << DDD3);
+  DDRD |= (1 << DDD4);
+  DDRD |= (1 << DDD5);
+
+  //Set PD0-PD7 to low
+  PORTD &= ~(1 << PORTD2); // Pin PD2 is to D7 on the lcd
+  PORTD &= ~(1 << PORTD3); // Pin PD3 is to D6
+  PORTD &= ~(1 << PORTD4); // Pin PD4 is to D5
+  PORTD &= ~(1 << PORTD5); // Pin PD5 is to D4
+
+  DDRB |= (1 << DDB3);  //Enable pin for the LCD
+  DDRB |= (1 << DDB4);  //Register Select pin 
+  
+  PORTB &= ~(1 << PORTB3);  //Enable
+  PORTB &= ~(1 << PORTB4);  //RS
+  
+  _delay_ms(100);
+
+  //First Function set to set into 8 bit mode
+  PORTD = 0x03;
+  pulse_enable();
+  _delay_ms(5);
+
+  //Second Function set instruction
+  PORTD = 0x03;
+  pulse_enable();
+  _delay_us(100);
+
+  //Third Function set instruction.
+  PORTD = 0x03;
+  pulse_enable();
+  _delay_us(100);
+  
+  //Another Function set
+  PORTD = 0x02;
+  pulse_enable();
+  _delay_us(100);
+
+  //Final Function Set
+  PORTD = 0x02;
+  pulse_enable();
+  PORTD = 0x08;
+  pulse_enable();
+  _delay_us(53);
+
+  //Display on/off 
+  PORTD = 0x00;
+  pulse_enable();
+  PORTD = 0x08;
+  pulse_enable();
+  _delay_us(53);
+
+  //Clear Display 
+  PORTD = 0x00;
+  pulse_enable();
+  PORTD = 0x08;
+  _delay_us(53);
+
+  //Entry Mode Set 
+  PORTD = 0x00;
+  pulse_enable();
+  PORTD = 0x06;
+  pulse_enable();
+  _delay_us(53);
+
+  //Initialization Complete
+  //Now turn on the display.
+  PORTD = 0x00;
+  pulse_enable();
+  PORTD = 0x0C; 
+
+  //Write a single character
+  write_character('H');
+}
