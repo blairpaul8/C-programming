@@ -1,15 +1,13 @@
-C= cc
-CFLAGS= -g 
+CC = cc
+CFLAGS = -g -Wall
 
-all: link_list
+TARGET = practice
 
-link_list: link_list.o
-	$(C) $(CFLAGS) link_list.o -o list
+all: $(TARGET)
 
-link_list.o: link_list.c
-	$(C) $(CFLAGS) -c link_list.c
+$(TARGET): link_list.c list_practice.c 
+	$(CC) $(CFLAGS) link_list.c list_practice.c -o $(TARGET)
 
 clean:
-	rm -f *.o link_list
-
+	rm -f $(TARGET)
 

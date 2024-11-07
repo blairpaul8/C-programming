@@ -1,6 +1,9 @@
+#include <lcd.h>
 #include <avr/io.h>
 #include <util/delay.h>
 #include <string.h>
+
+
 
 // All Commands for the LCD
 #define LCD_CLEAR 0x01
@@ -42,15 +45,10 @@ void lcd_init() {
 
 }
 
-void second_row() {
-  PORTD = 0x40;
-  PORTB |= (1 << PORTB3);
-  _delay_us(2);
-  PORTB &= ~(1 << PORTB3);
-  _delay_ms(2);
+void clear() {
+  PORTD = LCD_CLEAR;
+  pulse_enable();
 }
-
-
 
 void write_character(uint8_t c) {
   PORTB |= (1 << PORTB4);
@@ -67,10 +65,3 @@ void lcd_print(char *c) {
 
 }
 
-int main(void) {
-  //initialize the lcd
-  lcd_init();
-  //char *c = "Hello World";
-  lcd_print("Hello World");
-  
-}

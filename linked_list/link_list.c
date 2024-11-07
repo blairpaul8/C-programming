@@ -1,12 +1,7 @@
+#include "link_list.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
-struct Node {
-  int data;
-  struct Node *next;
-};
 
 void push_front(struct Node **head, int data) {
   struct Node *newNode = malloc(sizeof(struct Node));
@@ -84,18 +79,3 @@ void print_list(struct Node *head) {
   }
 }
 
-int main() {
-  //Node head = {.data=10,.next=NULL};
-  struct Node *head = NULL;
-  push_back(&head, 10);
-  push_back(&head, 15);
-  print_list(head);
-  printf("Pushing Front\n");
-  push_front(&head, 5);
-  print_list(head);
-  remove_node(&head, 15);
-  printf("Removing a node.\n");
-  print_list(head);
-  printf("Clearing list.\n");
-  clear(&head);
-}
