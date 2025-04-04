@@ -3,6 +3,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct Node* reverse_list(struct Node *head) {
+  struct Node *current = head;
+  struct Node *previous = NULL;
+  struct Node *temp = current->next;
+
+  while (current != NULL) {
+    current->next = previous;
+    previous = current;
+    current = temp;
+    temp = current->next;
+  }
+  head = previous;
+  return head;
+}
+
 void push_front(struct Node **head, int data) {
   struct Node *newNode = malloc(sizeof(struct Node));
   newNode->data = data;

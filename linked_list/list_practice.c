@@ -13,11 +13,14 @@ void parse_input(struct Node **head, char *cmd, int data) {
   if (cmd[0] == 'B') {
     push_back(head, data);
   }
-  if (cmd[0] == 'R') {
+  if (cmd[0] == 'D') {
     remove_node(head, data);
   }
   if (cmd[0] == 'C') {
     clear(head);
+  }
+  if (cmd[0] == 'R') {
+    *head = reverse_list(*head);
   }
 }
 
