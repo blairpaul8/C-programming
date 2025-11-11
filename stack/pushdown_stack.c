@@ -10,15 +10,15 @@ struct Node {
 static struct Node *head, *z, *t;
 
 void stack_init() {
-  head = (struct Node *) malloc(sizeof(*head));
-  z = (struct Node *) malloc(sizeof(*z));
+  head = (struct Node *)malloc(sizeof(*head));
+  z = (struct Node *)malloc(sizeof(*z));
   head->next = z;
   head->key = 0;
   z->next = z;
 }
 
 void push(int v) {
-  t = (struct Node *) malloc(sizeof(*t));
+  t = (struct Node *)malloc(sizeof(*t));
   t->key = v;
   t->next = head->next;
   head->next = t;
@@ -33,17 +33,14 @@ int pop() {
   return x;
 }
 
-int stack_empty() {
-  return head->next == z;
-}
+int stack_empty() { return head->next == z; }
 
 void print_stack() {
   struct Node *currentNode = head->next;
   while (currentNode != z) {
     if (currentNode->next != z) {
       printf("%d, ", currentNode->key);
-    }
-    else {
+    } else {
       printf("%d\n", currentNode->key);
     }
     currentNode = currentNode->next;
@@ -56,5 +53,4 @@ int main() {
   push(25);
   push(2);
   print_stack();
-
 }

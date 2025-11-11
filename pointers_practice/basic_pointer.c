@@ -1,10 +1,9 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 int main() {
   int x = 5;
   int y = 10;
-  int *p = &x;  //pointer that holds the memory address of y
-
+  int *p = &x; // pointer that holds the memory address of y
 
   printf("%p\n", (void *)p);
   printf("x = %d\n", x);

@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 void manage_math() {
@@ -21,8 +21,6 @@ void manage_math() {
       break;
     }
   }
-
-
 }
 
 int main() {
@@ -46,8 +44,5 @@ int main() {
     if (input == 5) {
       break;
     }
-
   }
-
-
 }

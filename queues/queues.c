@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 struct Node {
@@ -10,15 +10,15 @@ struct Node {
 static struct Node *head, *z, *t;
 
 void queue_init() {
-  head = (struct Node *) malloc(sizeof(*head));
-  z = (struct Node *) malloc(sizeof(*z));
+  head = (struct Node *)malloc(sizeof(*head));
+  z = (struct Node *)malloc(sizeof(*z));
   head->data = 0;
   head->next = z;
   z->next = z;
 }
 
 void push(int v) {
-  t = (struct Node *) malloc(sizeof(*t));
+  t = (struct Node *)malloc(sizeof(*t));
   t->data = v;
   t->next = head->next;
   head->next = t;

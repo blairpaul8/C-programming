@@ -1,6 +1,6 @@
 #include "vector.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
   Vector v;
@@ -16,7 +16,6 @@ int main() {
   push_back(&v, 4);
   printf("Resized\n");
 
-  
   for (int i = 0; i < size(&v); i++) {
     printf("%d ", v.array[i]);
   }
@@ -28,7 +27,6 @@ int main() {
   printf("\n");
 
   printf("Popped: %d\n", temp);
-
 
   return 0;
 }

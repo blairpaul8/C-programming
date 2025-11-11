@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Node* reverse_list(struct Node *head) {
+struct Node *reverse_list(struct Node *head) {
   struct Node *current = head;
   struct Node *previous = NULL;
   struct Node *temp = current->next;
@@ -85,12 +85,9 @@ void print_list(struct Node *head) {
   while (currentNode != NULL) {
     if (currentNode->next == NULL) {
       printf("%d\n", currentNode->data);
-    }
-    else {
+    } else {
       printf("%d, ", currentNode->data);
     }
     currentNode = currentNode->next;
-
   }
 }
-

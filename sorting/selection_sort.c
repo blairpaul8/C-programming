@@ -16,11 +16,10 @@ void selection(int a[], int N) {
     a[min] = a[i];
     a[i] = t;
   }
-
 }
 
 void print_list(int a[], int N) {
-  for (int i = 0; i <= N-1; i++) {
+  for (int i = 0; i <= N - 1; i++) {
     printf("%d ", a[i]);
   }
   printf("\n");

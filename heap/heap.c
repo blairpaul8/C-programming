@@ -1,7 +1,7 @@
 #include "heap.h"
 #include "vector.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void init_heap(Heap *h, int a) {
   h->capacity = a;
@@ -9,15 +9,15 @@ void init_heap(Heap *h, int a) {
   init_vector(&h->v, a);
 }
 
-//Used to swap two values in the vector.
+// Used to swap two values in the vector.
 static void swap(Vector *v, int a, int b) {
   int temp = v->array[a];
   v->array[a] = v->array[b];
   v->array[b] = temp;
 }
 
-//*h is a pointer to the heap and i is the index on which 
-//heapify is called.
+//*h is a pointer to the heap and i is the index on which
+// heapify is called.
 void heapify(Heap *h, int i) {
   int left = 2 * i + 1;
   int right = 2 * i + 2;

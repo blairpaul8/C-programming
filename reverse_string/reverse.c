@@ -4,7 +4,7 @@
 void reverse_string(char a[]) {
   int length = strlen(a);
 
-  int j = length - 1; 
+  int j = length - 1;
   for (int i = 0; i < length / 2; i++) {
     char temp = a[i];
     a[i] = a[j];

@@ -2,24 +2,21 @@
 #include <util/delay.h>
 
 int main() {
-  //set portb to be an output
+  // set portb to be an output
   DDRB |= (1 << DDB5);
 
-  //blink the led
+  // blink the led
   while (1) {
-    //Set pin five of PORTB to high
+    // Set pin five of PORTB to high
     PORTB |= (1 << PORTB5);
-    
-    //Wait
+
+    // Wait
     _delay_ms(1000);
 
-    //Unset pin 5 of PORTB
+    // Unset pin 5 of PORTB
     PORTB &= ~(1 << PORTB5);
 
-    //Wait again
+    // Wait again
     _delay_ms(1000);
-
   }
-
-
 }

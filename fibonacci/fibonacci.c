@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int fibonacci(int n) {
@@ -13,9 +13,7 @@ int main() {
   int num;
   printf("Enter a number >  ");
   scanf("%d", &num);
-  
+
   printf("%d ", fibonacci(num));
   printf("\n");
-
 }
-
